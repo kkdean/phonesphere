@@ -1,0 +1,61 @@
+<html>
+    <body>
+        <div id="app">
+            {{ details }}
+            <input type="text" v-model="details.first_name" />
+            <input type="text" v-model="details.second_name" />
+
+            {{ books }}
+            <ol>
+                <li v-for="book in books"> {{ book }}</li>
+            </ol>
+            <div>
+                <div v-for="phone in phones">
+                    <p>OS : {{ phone.type }}</p>
+                    <h3>{{ phone.name }}</h3>
+                    <h2>{{ phone.price }} {{ phone.currency }}</h2>
+                    <img :src="phone.img" style="height: 200px;width: 200px;" alt="">
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script>
+            const { createApp, ref } = Vue
+          
+            createApp({
+              setup() {
+                const details = ref({
+                    first_name: '',
+                    second_name: ''
+                })
+                const books = ref([
+                    
+                        "exotic","romantic", "educational"
+                    
+                ])
+                const phones = ref([
+                    {
+                        type: "ios",
+                        name: 'Iphone 16',
+                        price: '256000',
+                        currency: 'KES',
+                        img: 'https://images.unsplash.com/photo-1726839662712-83fadeddecff?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                    },
+                    {
+                        type: "ios",
+                        name: 'Iphone 15',
+                        price: '156000',
+                        currency: 'KES',
+                        img: 'https://images.unsplash.com/photo-1727079516633-04d51a733033?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                    }
+                ])
+                return {
+                  details,
+                  books,
+                  phones
+                }
+              }
+            }).mount('#app')
+          </script>
+    </body>
+</html>
